@@ -5,7 +5,7 @@
     <th scope="col">First Name</th>
     <th scope="col">Last Name</th>
     <th scope="col">Email</th>
-    <th scope="col" colspan="2">Actions</th>
+    <th scope="col">Actions</th>
   </thead>
   <tbody>
     <% @users.each_with_index do |user, i| %>
@@ -15,10 +15,6 @@
         <td><%= user.last_name %></td>
         <td><%= user.email %></td>
         <td><%= link_to 'Show', user_path(user) %></td>
-        <%# if user == current_user || current_user.has_role?(:admin) %>
-        <% if user == current_user %>
-          <td><%= link_to 'Edit', edit_user_registration_path(user) %></td>
-        <% end %>
       </tr>
     <% end %>
   </tbody>
