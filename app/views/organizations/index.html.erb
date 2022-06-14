@@ -1,0 +1,19 @@
+<h1 class="mb-4">Organizations</h1>
+<table class="table">
+  <thead>
+    <th scope="col">#</th>
+    <th scope="col">Name</th>
+    <th scope="col">Description</th>
+    <th scope="col">Actions</th>
+  </thead>
+  <tbody>
+    <% @organizations.each_with_index do |organization, i| %>
+      <tr>
+        <th scope="row"><%= i + 1 %></th>
+        <td><%= organization.name %></td>
+        <td><%= organization.description %></td>
+        <td><%= link_to 'Show', organization_path(organization) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

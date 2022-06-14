@@ -5,6 +5,8 @@ class User < ApplicationRecord
   devise :invitable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  belongs_to :organization
+
   def full_name
     "#{first_name} #{last_name}"
   end
