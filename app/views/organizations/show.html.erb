@@ -11,6 +11,7 @@
   <% @employees.each do |e| %>
     <li class="list-group-item">
       <%= e.full_name.present? ? e.full_name : e.email %>
+      <%= link_to 'Remove', organization_remove_user_path(@organization, user_id: e), class: 'btn-sm float-right' %>
     </li>
   <% end %>
 </ul>

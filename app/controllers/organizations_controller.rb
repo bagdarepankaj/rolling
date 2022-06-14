@@ -27,6 +27,17 @@ class OrganizationsController < ApplicationController
     end
   end
 
+  def remove_user
+    @user = User.find_by(id: params[:user_id])
+    if @user.present?
+      @user.update(organization_id: nil)
+      @user.remove_role :employee
+      redirect_to organization_path(@organization), notice: 'User Removed Sucessfully'
+    else
+      render :show, alert: "User is not in records"
+    end
+  end
+
   def create
     @organization =  current_user.build_organization(organization_params)
     if @organization.save
