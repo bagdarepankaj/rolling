@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <div class="container">
-    <a class="navbar-brand" href="#">Home</a>
+    <%= link_to 'Home', root_path, class: 'navbar-brand' %>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -9,6 +9,9 @@
         <li class="nav-item">
           <!-- <a class="nav-link active" aria-current="page" href="#">Home</a> -->
           <%= link_to 'Home', root_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Organizations', organizations_path, class: 'nav-link' %>
         </li>
         <li class="nav-item">
           <!-- <a class="nav-link" href="#">Link</a> -->
@@ -21,6 +24,8 @@
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <% if signed_in? %>
               <li><%= link_to 'Profile', user_path(current_user), class: 'dropdown-item' %></li>
+              <li><%= link_to "Invite User", new_user_invitation_path, class: 'dropdown-item' %></li>
+              <li><hr class="dropdown-divider"></li>
               <li><%= link_to 'Logout', destroy_user_session_path, data: { "turbo-method": :delete, confirm: 'Are you sure?' }, class: 'dropdown-item' %>
                 <!-- <a class="dropdown-item" href="#">Action</a> -->
               </li>
@@ -30,8 +35,7 @@
                 <!-- <a class="dropdown-item" href="#">Another action</a> -->
               </li>
             <% end %>
-            <!-- <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li> -->
+            <!-- <li><a class="dropdown-item" href="#">Something else here</a></li> -->
           </ul>
         </li>
       </ul>
