@@ -1,8 +1,9 @@
 <div class="segement">
   <h1><%= @organization.name %></h1>
   <h5><%= @organization.description %></h5>
-
-  <%= link_to 'Edit', edit_organization_path(@organization) %> |
+  <% if user_accessible? %>
+    <%= link_to 'Edit', edit_organization_path(@organization) %> |
+  <% end %>
   <%= link_to 'Back', :back %>
 </div><br>
 
@@ -11,13 +12,15 @@
   <% @employees.each do |e| %>
     <li class="list-group-item">
       <%= e.full_name.present? ? e.full_name : e.email %>
-      <%= link_to 'Remove', organization_remove_user_path(@organization, user_id: e), class: 'btn-sm float-right' %>
+      <% if user_accessible? %>
+        <%= link_to 'Remove', organization_remove_user_path(@organization, user_id: e), class: 'btn-sm float-right' %>
+      <% end %>
     </li>
   <% end %>
 </ul>
 <br>
-
-<%= link_to 'Add Users to Organization', organization_users_list_path(@organization), remote: true, class: 'btn btn-primary' %>
-
+<% if user_accessible? %>
+  <%= link_to 'Add Users to Organization', organization_users_list_path(@organization), remote: true, class: 'btn btn-primary' %>
+<% end %>
 <div id="users-list" class="mt-3">
 </div>

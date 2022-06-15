@@ -10,4 +10,12 @@ class User < ApplicationRecord
   def full_name
     "#{first_name} #{last_name}"
   end
+
+  def admin?
+    has_role? :admin
+  end
+
+  def founder?
+    has_role? :founder
+  end
 end
