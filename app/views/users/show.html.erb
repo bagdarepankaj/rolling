@@ -1,12 +1,13 @@
-<h2>User Show</h2>
-<div class="">
+<h2>
+  User Show
+  <% if current_user == @user %>
+    <%= link_to 'Edit', edit_user_registration_path(@user), class: 'btn btn-primary float-right' %>
+  <% end %>
+</h2><br>
+
+<div class="segment">
   <p>First Name: <%= @user.first_name %></p>
   <p>Last Name: <%= @user.last_name %></p>
   <p>Email: <%= @user.email %></p>
-  <p>
-    <% if current_user == @user %>
-      <%= link_to 'Edit', edit_user_registration_path(@user) %> |
-    <% end %>
-    <%= link_to 'Back', users_path %>
-  </p>
+  <p><%= link_to 'Back', users_path %></p>
 </div>
