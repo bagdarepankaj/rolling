@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index, :show]
   resources :organizations do
+    resources :projects
     get 'add_user', to: 'organizations#add_user'
     get 'remove_user', to: 'organizations#remove_user'
     get 'users_list', to: 'organizations#users_list'

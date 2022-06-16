@@ -1,22 +1,33 @@
-<div class="segement">
-  <h1>
-    <%= @organization.name %>
+<div class="row">
+  <div class="col-md-8">
+    <div class="card mt-3 ">
+      <h1 class="card-header"><%= @organization.name %></h1>
+
+      <div class="card-body">
+        <h5><%= @organization.description %></h5>
+        <% if user_accessible? %>
+          <%= link_to 'Edit', edit_organization_path(@organization) %> |
+        <% end %>
+        <%= link_to 'Back', :back %>
+      </div>
+    </div>
+
+    <div class="col">
+      <%= render template: 'projects/index', organization: @organization %>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <h3 class="text-center">Employees</h3>
+    <ul class="list-group list-group-horizontal-md" id="employees">
+      <%= render @employees %>
+    </ul>
     <% if user_accessible? %>
-      <%= link_to 'Edit', edit_organization_path(@organization), class: 'btn btn-primary float-right' %>
+      <div class="mt-2">
+        <%= link_to 'Add Users to Organization', organization_users_list_path(@organization), remote: true, class: 'btn btn-primary text-center', style: "display: block;" %>
+      </div>
     <% end %>
-  </h1>
-  <h5><%= @organization.description %></h5>
-  <%= link_to 'Back', :back %>
-</div><br>
-
-<h4>Employees</h4>
-
-<ul class="list-group list-group-horizontal-md" id="employees">
-  <%= render @employees %>
-</ul><br>
-
-<% if user_accessible? %>
-  <%= link_to 'Add Users to Organization', organization_users_list_path(@organization), remote: true, class: 'btn btn-primary' %>
-<% end %>
+  </div>
+</div>
 <div id="users-list" class="mt-3">
 </div>

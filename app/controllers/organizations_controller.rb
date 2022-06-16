@@ -15,6 +15,7 @@ class OrganizationsController < ApplicationController
 
   def show
     @employees = User.where(organization_id: @organization.id)
+    @projects = @organization.projects
   end
 
   def add_user

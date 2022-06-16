@@ -1,0 +1,8 @@
+<%= render @project %>
+
+<div>
+  <%= link_to "Edit", edit_organization_project_path(@organization, @project) %> |
+  <%= link_to "Back", organization_projects_path(@organization) %>
+
+  <%#= button_to "Destroy this project", @project, method: :delete %>
+</div>
