@@ -6,21 +6,15 @@
     <% end %>
   </h1>
   <h5><%= @organization.description %></h5>
-  <%= link_to 'Back', :back, class: 'btn' %>
+  <%= link_to 'Back', :back %>
 </div><br>
 
 <h4>Employees</h4>
+
 <ul class="list-group list-group-horizontal-md" id="employees">
-  <% @employees.each do |e| %>
-    <li class="list-group-item">
-      <%= e.full_name.present? ? e.full_name : e.email %>
-      <% if user_accessible? %>
-        <%= link_to 'Remove', organization_remove_user_path(@organization, user_id: e), class: 'btn-sm float-right' %>
-      <% end %>
-    </li>
-  <% end %>
-</ul>
-<br>
+  <%= render @employees %>
+</ul><br>
+
 <% if user_accessible? %>
   <%= link_to 'Add Users to Organization', organization_users_list_path(@organization), remote: true, class: 'btn btn-primary' %>
 <% end %>

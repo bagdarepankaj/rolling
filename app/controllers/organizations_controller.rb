@@ -1,5 +1,6 @@
 class OrganizationsController < ApplicationController
   before_action :set_organization, except: [:new, :index, :create]
+  before_action :find_user, only: [:add_user, :remove_user]
 
   def index
     @organizations = Organization.all
@@ -17,24 +18,20 @@ class OrganizationsController < ApplicationController
   end
 
   def add_user
-    @user = User.find_by(id: params[:user_id])
-    if @user.present?
-      @user.update(organization_id: @organization.id)
-      @user.add_role :employee
-      redirect_to organization_path(@organization), notice: 'User added Sucessfully'
-    else
-      render :show, alert: "User is not in records"
+    @user.update(organization_id: @organization.id)
+    @user.add_role :employee
+    respond_to do |format|
+      format.html { redirect_to organization_path(@organization), notice: 'User Added Sucessfully' }
+      format.js
     end
   end
 
   def remove_user
-    @user = User.find_by(id: params[:user_id])
-    if @user.present?
-      @user.update(organization_id: nil)
-      @user.remove_role :employee
-      redirect_to organization_path(@organization), notice: 'User Removed Sucessfully'
-    else
-      render :show, alert: "User is not in records"
+    @user.update(organization_id: nil)
+    @user.remove_role :employee
+    respond_to do |format|
+      format.html { redirect_to organization_path(@organization), notice: 'User Removed Sucessfully' }
+      format.js
     end
   end
 
@@ -72,5 +69,12 @@ class OrganizationsController < ApplicationController
     id = params[:id] || params[:organization_id]
     @organization = Organization.find_by(id: id)
     redirect_to organizations_path, alert: 'Organization not Found' unless @organization
+  end
+
+  def find_user
+    @user = User.find_by(id: params[:user_id])
+    unless @user.present?
+      redirect_to organization_path(@organization), alert: "User is not in records"
+    end
   end
 end

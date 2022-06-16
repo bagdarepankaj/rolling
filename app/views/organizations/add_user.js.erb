@@ -1,0 +1,5 @@
+$('#employees').append("<%= j render('users/user', user: @user) %>")
+$.ajax({
+  url: "<%= organization_users_list_path(@organization) %>",
+  type: 'GET'
+})

@@ -1,0 +1,6 @@
+<li class="list-group-item">
+  <%= user.full_name.present? ? user.full_name : user.email %>
+  <% if user_accessible? %>
+    <%= link_to 'Remove', organization_remove_user_path(@organization, user_id: user), class: 'btn-sm float-right' %>
+  <% end %>
+</li>
