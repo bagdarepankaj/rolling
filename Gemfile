@@ -21,7 +21,8 @@ gem "importmap-rails"
 gem 'bootstrap'
 
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
-gem "turbo-rails"
+# gem "turbo-rails"
+gem "turbo-rails", '~> 1.0.0'
 
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "stimulus-rails"
@@ -50,6 +51,11 @@ gem "bootsnap", require: false
 gem 'hirb'
 # Use Sass to process CSS
 gem "sass-rails"
+
+gem "cssbundling-rails", "~> 1.1"
+
+# esbuild for js and css asset pipeline
+gem "esbuild-rails", "~> 0.1.4"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"

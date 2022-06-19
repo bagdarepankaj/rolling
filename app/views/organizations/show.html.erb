@@ -13,13 +13,13 @@
     </div>
 
     <div class="col">
-      <%= render template: 'projects/index', organization: @organization %>
+      <%= render 'projects/project_accordion', organization: @organization, projects: @projects %>
     </div>
   </div>
 
   <div class="col-md-4">
     <h3 class="text-center">Employees</h3>
-    <ul class="list-group list-group-horizontal-md" id="employees">
+    <ul class="list-group" id="employees">
       <%= render @employees %>
     </ul>
     <% if user_accessible? %>

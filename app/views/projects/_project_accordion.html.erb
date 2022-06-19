@@ -1,0 +1,18 @@
+<h3 class="mt-4 mb-2"># Projects</h3>
+
+<div class="accordion accordion-flush" id="accordionFlush">
+  <% projects.each do |project| %>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="flush-heading-<%= project.id %>">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse-<%= project.id %>" aria-expanded="false" aria-controls="flush-collapse-<%= project.id %>">
+          <%= project.name %>
+        </button>
+      </h2>
+      <div id="flush-collapse-<%= project.id %>" class="accordion-collapse collapse" aria-labelledby="flush-heading-<%= project.id %>" data-bs-parent="#accordionFlush">
+        <div class="accordion-body">
+          <%= render project %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
