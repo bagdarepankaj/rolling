@@ -9,4 +9,7 @@
     <%= project.description %>
   </p>
 
+  <p>
+    <%= link_to "Show", organization_project_path(@organization, project) unless params[:action] == "show" %>
+  </p>
 </div>

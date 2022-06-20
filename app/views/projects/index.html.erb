@@ -1,12 +1,15 @@
-<h2>Projects</h2>
+<%= render 'organizations/organization', organization: @organization %>
 
-<div id="projects">
-  <% @projects.each do |project| %>
-    <%= render project %>
-    <p>
-      <%= link_to "Show", organization_project_path(@organization, project) %>
-    </p>
-  <% end %>
+<div class="row">
+  <div class="col-md-12">
+
+    <h2 class="mb-4 mt-3">Projects</h2>
+
+    <div id="projects">
+      <%= render @projects %>
+    </div>
+
+    <%= link_to "New Project", new_organization_project_path(@organization || organization) %>
+
+  </div>
 </div>
-
-<%= link_to "New Project", new_organization_project_path(@organization || organization) %>

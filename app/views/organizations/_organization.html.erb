@@ -1,0 +1,12 @@
+<div class="card">
+  <h1 class="card-header" style="color: cadetblue;">
+    <%= organization.name %>
+  </h1>
+  <div class="card-body">
+    <h5><%= organization.description %></h5>
+    <% if user_accessible? %>
+      <%= link_to 'Edit', edit_organization_path(organization) %> |
+    <% end %>
+    <%= link_to 'Back', :back %>
+  </div>
+</div>

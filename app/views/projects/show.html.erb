@@ -1,8 +1,16 @@
-<%= render @project %>
+<%= render 'organizations/organization', organization: @organization %>
 
-<div>
-  <%= link_to "Edit", edit_organization_project_path(@organization, @project) %> |
-  <%= link_to "Back", organization_projects_path(@organization) %>
+<div class="row">
+  <div class="col">
 
-  <%#= button_to "Destroy this project", @project, method: :delete %>
+    <h3 class="mt-3 mb-3">Project</h3>
+    <%= render @project %>
+
+    <div>
+      <%= link_to "Edit", edit_organization_project_path(@organization, @project) %> |
+      <%= link_to "Back", organization_projects_path(@organization) %>
+      <%#= button_to "Destroy this project", @project, method: :delete %>
+    </div>
+
+  </div>
 </div>
